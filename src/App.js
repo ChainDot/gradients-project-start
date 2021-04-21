@@ -1,14 +1,21 @@
-import GradientsList from "./components/GradientsList"
+import { useState } from "react";
+import Footer from "./components/Footer";
+import GradientsApp from "./components/GradientsApp";
+import Header from "./components/Header";
 
-function App() {
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  const modelClasses = darkMode ? "bg-dark text white" : "bg-light";
+
   return (
-    <div>
-      <h1 className="text-center my-4">Alyra Gradients</h1>
+    <div className={`App min-vh-100 d-flex flex-column ${modelClasses}`}>
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       <main className="container">
-        <GradientsList />
+        <GradientsApp darkMode={darkMode} setDarkMode={setDarkMode} />
       </main>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
